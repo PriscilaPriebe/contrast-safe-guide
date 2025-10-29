@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FileText } from "lucide-react";
+import { ProfessionalRegistration } from "./ProfessionalRegistration";
 import { PrivacyConsent } from "./PrivacyConsent";
 
 export const DocumentacaoSection = () => {
+  const [isRegistered, setIsRegistered] = useState(false);
+  const [professionalData, setProfessionalData] = useState<any>(null);
   const [hasConsented, setHasConsented] = useState(false);
 
   return (
@@ -64,10 +67,19 @@ export const DocumentacaoSection = () => {
           <CardTitle>Formulário de Notificação de Evento Adverso</CardTitle>
         </CardHeader>
         <CardContent>
-          {!hasConsented ? (
+          {!isRegistered ? (
+            <ProfessionalRegistration 
+              onRegistered={(data) => {
+                setProfessionalData(data);
+                setIsRegistered(true);
+              }} 
+              formType="evento-adverso"
+            />
+          ) : !hasConsented ? (
             <PrivacyConsent 
               onConsent={() => setHasConsented(true)} 
               formType="evento-adverso"
+              professionalName={professionalData?.nome}
             />
           ) : (
             <>

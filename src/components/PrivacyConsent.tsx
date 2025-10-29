@@ -8,9 +8,10 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 interface PrivacyConsentProps {
   onConsent: () => void;
   formType: "evento-adverso" | "extravasamento";
+  professionalName?: string;
 }
 
-export const PrivacyConsent = ({ onConsent, formType }: PrivacyConsentProps) => {
+export const PrivacyConsent = ({ onConsent, formType, professionalName }: PrivacyConsentProps) => {
   const [lgpdConsent, setLgpdConsent] = useState(false);
   const [dataProcessingConsent, setDataProcessingConsent] = useState(false);
 
@@ -29,6 +30,11 @@ export const PrivacyConsent = ({ onConsent, formType }: PrivacyConsentProps) => 
             <h3 className="font-semibold text-lg mb-2">
               Consentimento e Proteção de Dados
             </h3>
+            {professionalName && (
+              <p className="text-sm font-medium text-primary mb-2">
+                Profissional: {professionalName}
+              </p>
+            )}
             <p className="text-sm text-muted-foreground">
               Este formulário coleta dados sensíveis de saúde que serão processados via Google Forms 
               e armazenados no Google Workspace da instituição.

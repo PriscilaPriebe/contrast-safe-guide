@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ProfessionalRegistration } from "./ProfessionalRegistration";
 import { PrivacyConsent } from "./PrivacyConsent";
 
 export const ExtravasamentoForm = () => {
+  const [isRegistered, setIsRegistered] = useState(false);
+  const [professionalData, setProfessionalData] = useState<any>(null);
   const [hasConsented, setHasConsented] = useState(false);
 
   return (
@@ -13,10 +16,19 @@ export const ExtravasamentoForm = () => {
           <CardTitle>Formulário de Extravasamento</CardTitle>
         </CardHeader>
         <CardContent>
-          {!hasConsented ? (
+          {!isRegistered ? (
+            <ProfessionalRegistration 
+              onRegistered={(data) => {
+                setProfessionalData(data);
+                setIsRegistered(true);
+              }} 
+              formType="extravasamento"
+            />
+          ) : !hasConsented ? (
             <PrivacyConsent 
               onConsent={() => setHasConsented(true)} 
               formType="extravasamento"
+              professionalName={professionalData?.nome}
             />
           ) : (
             <>
