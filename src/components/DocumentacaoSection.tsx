@@ -1,7 +1,11 @@
+import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FileText } from "lucide-react";
+import { PrivacyConsent } from "./PrivacyConsent";
 
 export const DocumentacaoSection = () => {
+  const [hasConsented, setHasConsented] = useState(false);
+
   return (
     <section id="documentacao" className="py-12">
       <h2 className="text-3xl font-bold mb-6">Comunicação, Registro & Qualidade</h2>
@@ -60,27 +64,36 @@ export const DocumentacaoSection = () => {
           <CardTitle>Formulário de Notificação de Evento Adverso</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="rounded-lg overflow-hidden border border-border">
-            <iframe 
-              src="https://docs.google.com/forms/d/e/1FAIpQLSdKCTr9fyBkDTbT4sB5OdqWDdpoJ28_kVJlmkZtw6dmPw8r5A/viewform?embedded=true" 
-              width="100%" 
-              height="800" 
-              frameBorder="0" 
-              marginHeight={0} 
-              marginWidth={0}
-              title="Formulário de Notificação de Evento Adverso"
-            >
-              Carregando…
-            </iframe>
-          </div>
-          <p className="text-xs text-muted-foreground mt-4">
-            📡 Integração ativa via Google Forms. Os registros são salvos na planilha vinculada ao formulário, 
-            com controle de acesso do Google Workspace.
-          </p>
-          <p className="text-xs text-muted-foreground mt-2">
-            ⚙️ Integre este formulário ao seu HIS/RIS/Prontuário eletrônico conforme LGPD e política institucional. 
-            Campos mapeados a conformidade: RDC 611/2022; ACR/ESUR (registro de reação, manejo e acompanhamento).
-          </p>
+          {!hasConsented ? (
+            <PrivacyConsent 
+              onConsent={() => setHasConsented(true)} 
+              formType="evento-adverso"
+            />
+          ) : (
+            <>
+              <div className="rounded-lg overflow-hidden border border-border">
+                <iframe 
+                  src="https://docs.google.com/forms/d/e/1FAIpQLSdKCTr9fyBkDTbT4sB5OdqWDdpoJ28_kVJlmkZtw6dmPw8r5A/viewform?embedded=true" 
+                  width="100%" 
+                  height="800" 
+                  frameBorder="0" 
+                  marginHeight={0} 
+                  marginWidth={0}
+                  title="Formulário de Notificação de Evento Adverso"
+                >
+                  Carregando…
+                </iframe>
+              </div>
+              <p className="text-xs text-muted-foreground mt-4">
+                📡 Integração ativa via Google Forms. Os registros são salvos na planilha vinculada ao formulário, 
+                com controle de acesso do Google Workspace.
+              </p>
+              <p className="text-xs text-muted-foreground mt-2">
+                ⚙️ Integre este formulário ao seu HIS/RIS/Prontuário eletrônico conforme LGPD e política institucional. 
+                Campos mapeados a conformidade: RDC 611/2022; ACR/ESUR (registro de reação, manejo e acompanhamento).
+              </p>
+            </>
+          )}
         </CardContent>
       </Card>
     </section>
