@@ -10,8 +10,9 @@ export const Header = () => {
               <Activity className="w-6 h-6 text-primary-foreground" />
             </div>
             <div>
-              <h1 className="text-lg font-bold">Assistência de Enfermagem</h1>
-              <p className="text-xs text-muted-foreground">Eventos adversos após uso de contraste</p>
+              <p className="text-xs font-semibold text-primary">EnvolveRI</p>
+              <h1 className="text-sm md:text-base font-bold leading-tight">Sistema de Suporte à Decisão Clínica</h1>
+              <p className="text-xs text-muted-foreground">Enfermagem em Centro de Diagnóstico</p>
             </div>
           </div>
           <nav className="hidden md:flex items-center gap-2">
