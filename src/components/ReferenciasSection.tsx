@@ -5,18 +5,21 @@ export const ReferenciasSection = () => {
   const conformidade = [
     {
       requisito: "RDC 611/2022 (ANVISA)",
+      url: "https://www.in.gov.br/en/web/dou/-/resolucao-rdc-n-611-de-9-de-marco-de-2022-386107075",
       descricao: "organização e funcionamento de serviços de radiologia diagnóstica e intervencionista; segurança do paciente; rastreabilidade de insumos.",
       abordagem: "Propõe checklist pré-exame, registro mínimo obrigatório, rastreabilidade de lote de contraste e plano de treinamento e revisão de eventos.",
       secoes: "Triagem de Risco; Documentação; Referências & Governança."
     },
     {
       requisito: "ACR Manual on Contrast Media",
+      url: "https://www.acr.org/Clinical-Resources/Clinical-Tools-and-Reference/Contrast-Manual",
       descricao: "reconhecimento e manejo de reações, risco renal, gravidez/lactação, extravasamento.",
       abordagem: "Algoritmos de resposta imediata, orientação para suporte inicial e escalonamento; notas sobre lactantes/gestantes e risco renal.",
       secoes: "Resposta Imediata; Extravasamento; Educação ao Paciente."
     },
     {
       requisito: "ESUR Guidelines on Contrast Agents",
+      url: "https://www.esur.org/esur-guidelines-on-contrast-agents/",
       descricao: "PC-AKI, metformina, extravasamento, pediatria, gravidez/lactação.",
       abordagem: "Inclui pontos de atenção pré-exame (risco renal, medicamentos) e condutas para extravasamento e acompanhamento.",
       secoes: "Triagem de Risco; Extravasamento; Educação ao Paciente."
@@ -60,7 +63,15 @@ export const ReferenciasSection = () => {
                 {conformidade.map((item, idx) => (
                   <tr key={idx} className="border-b border-border">
                     <td className="p-3 align-top">
-                      <strong className="text-foreground">{item.requisito}</strong>
+                      <a 
+                        href={item.url} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-foreground font-semibold hover:text-primary transition-colors group"
+                      >
+                        {item.requisito}
+                        <ExternalLink className="w-3 h-3 opacity-60 group-hover:opacity-100 transition-opacity" />
+                      </a>
                       <p className="text-xs text-muted-foreground mt-1">{item.descricao}</p>
                     </td>
                     <td className="p-3 text-sm text-muted-foreground align-top">{item.abordagem}</td>
