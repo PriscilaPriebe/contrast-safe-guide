@@ -128,9 +128,21 @@ export const ReferenciasSection = () => {
           </CardHeader>
           <CardContent>
             <ul className="space-y-3">
-              <li className="flex items-start gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-secondary mt-2 flex-shrink-0" />
-                <span className="text-sm">RIS/PACS/HIS com alerta de alergia a contraste.</span>
+              <li className="flex flex-col gap-2">
+                <div className="flex items-start gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-secondary mt-2 flex-shrink-0" />
+                  <span className="text-sm">RIS/PACS/HIS com alerta de alergia a contraste.</span>
+                </div>
+                <button
+                  onClick={() => {
+                    // Placeholder para integração futura
+                    alert('Funcionalidade de envio de alerta ao prontuário eletrônico será implementada conforme integração com sistema HIS/RIS');
+                  }}
+                  className="ml-5 inline-flex items-center gap-1 text-xs text-primary hover:text-primary/80 transition-colors font-medium"
+                >
+                  <ExternalLink className="w-3 h-3" />
+                  Enviar alerta ao prontuário eletrônico
+                </button>
               </li>
               <li className="flex items-start gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-secondary mt-2 flex-shrink-0" />
