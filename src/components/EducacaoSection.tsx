@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Users, Phone, Printer } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Users, Phone, Printer, FileText } from "lucide-react";
 
 export const EducacaoSection = () => {
   return (
@@ -38,7 +39,7 @@ export const EducacaoSection = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <ul className="space-y-3">
+            <ul className="space-y-3 mb-4">
               {[
                 "Revisão telefônica em 24–72h quando indicado (especialmente reações moderadas/graves ou extravasamento relevante).",
                 "Encaminhar para avaliação alergológica quando reação sugestiva de hipersensibilidade."
@@ -49,6 +50,31 @@ export const EducacaoSection = () => {
                 </li>
               ))}
             </ul>
+            
+            <div className="bg-accent/10 border border-accent/20 rounded-lg p-4 mt-4">
+              <div className="flex items-start gap-3">
+                <FileText className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
+                <div className="flex-1 space-y-2">
+                  <p className="text-sm font-medium">
+                    <strong>Importante:</strong> Documentar todos os eventos em prontuário eletrônico
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    O registro adequado de reações adversas e extravasamentos é essencial para o acompanhamento do paciente e suporte à decisão clínica.
+                  </p>
+                  <Button 
+                    size="sm" 
+                    className="mt-2"
+                    onClick={() => {
+                      // Link para sistema de prontuário - placeholder para integração futura
+                      alert('Funcionalidade de registro em prontuário será integrada ao sistema de suporte à decisão clínica.');
+                    }}
+                  >
+                    <FileText className="w-4 h-4 mr-2" />
+                    Registrar em Prontuário
+                  </Button>
+                </div>
+              </div>
+            </div>
           </CardContent>
         </Card>
       </div>
