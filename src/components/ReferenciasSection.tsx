@@ -128,16 +128,31 @@ export const ReferenciasSection = () => {
           </CardHeader>
           <CardContent>
             <ul className="space-y-3">
-              {[
-                "RIS/PACS/HIS com alerta de alergia a contraste.",
-                "Formulário digital integrado (LGPD; perfis de acesso).",
-                "Dashboards de qualidade (tempo-resposta, taxa de eventos)."
-              ].map((item, index) => (
-                <li key={index} className="flex items-start gap-2">
+              <li className="flex items-start gap-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-secondary mt-2 flex-shrink-0" />
+                <span className="text-sm">RIS/PACS/HIS com alerta de alergia a contraste.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-secondary mt-2 flex-shrink-0" />
+                <span className="text-sm">Formulário digital integrado (LGPD; perfis de acesso).</span>
+              </li>
+              <li className="flex flex-col gap-2">
+                <div className="flex items-start gap-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-secondary mt-2 flex-shrink-0" />
-                  <span className="text-sm">{item}</span>
-                </li>
-              ))}
+                  <span className="text-sm">Dashboards de qualidade (tempo-resposta, taxa de eventos).</span>
+                </div>
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.print();
+                  }}
+                  className="ml-5 inline-flex items-center gap-1 text-xs text-primary hover:text-primary/80 transition-colors font-medium"
+                >
+                  <ExternalLink className="w-3 h-3" />
+                  Gerar relatório em PDF
+                </a>
+              </li>
             </ul>
           </CardContent>
         </Card>
